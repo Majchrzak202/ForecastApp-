@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 const api = {
@@ -7,14 +7,27 @@ const api = {
 };
 
 function App() {
+  const [query, setQuery] = useState("Pensylwania");
   const fetchForecastHandler = () => {
-    fetch(
+    fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+    .then((res) => res.json()).then((data) => {
+      const cityLat = data.coord.lat
+      const cityLon = data.coord.lon
+      
+      return fetch(`${api.base}onecall?lat=${cityLat}&lon=${cityLon}&exclude=current,hourly,minutely&APPID=${api.key}`)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+      })
+    })
+
+    /*  fetch(
       `${api.base}onecall?lat=33.44&lon=-94.04&exclude=current,hourly,minutely&units=metric&APPID=${api.key}`
     )
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
-      });
+      }); */
   };
 
   return (
