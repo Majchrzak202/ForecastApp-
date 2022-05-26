@@ -1,0 +1,13 @@
+
+
+.list{
+    display:grid;
+    min-height: 40vh;
+    min-width: 80vh;
+    margin-top: 15px;
+    grid-auto-columns: 1fr;
+    grid-column-gap: 50px;
+    grid-row-gap: 16px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+}
