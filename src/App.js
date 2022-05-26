@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import "./App.css";
+import Navbar from "./Components/UI/Navbar";
+import SearchBar from "./Components/UI/SearchBar";
+import Header from "./Components/UI/Header";
+import ForecastList from "./Components/Forecast /ForecastList";
 
 const api = {
   base: "https://api.openweathermap.org/data/2.5/",
@@ -7,32 +11,39 @@ const api = {
 };
 
 function App() {
-  const [query, setQuery] = useState("Pensylwania");
+  const [query, setQuery] = useState("Warsaw");
   const fetchForecastHandler = () => {
     fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
-    .then((res) => res.json()).then((data) => {
-      const cityLat = data.coord.lat
-      const cityLon = data.coord.lon
-      
-      return fetch(`${api.base}onecall?lat=${cityLat}&lon=${cityLon}&exclude=current,hourly,minutely&APPID=${api.key}`)
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
-      })
-    })
-
-    /*  fetch(
-      `${api.base}onecall?lat=33.44&lon=-94.04&exclude=current,hourly,minutely&units=metric&APPID=${api.key}`
-    )
       .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-      }); */
+      .then((data) => {
+        let cityLat = data.coord.lat;
+        let cityLon = data.coord.lon;
+
+        return fetch(
+          `${api.base}onecall?lat=${cityLat}&lon=${cityLon}&exclude=current,hourly,minutely&APPID=${api.key}`
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
+      });
   };
 
   return (
-    <div className="app">
-      <button onClick={fetchForecastHandler}>Fetch Forecast</button>
+    <div>
+      <div>
+        <Navbar />
+      </div>
+      <div className="app">
+        <Header />
+        <SearchBar />
+
+        {/* <button onClick={fetchForecastHandler}>Fetch Forecast</button> */}
+      </div>
+      <div className="forecast-list">
+        
+        <ForecastList />
+      </div>
     </div>
   );
 }
