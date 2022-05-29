@@ -11,20 +11,22 @@ const api = {
 };
 
 function App() {
-  const [query, setQuery] = useState("Warsaw");
+  const [search, setSearch] = useState("Warsaw");
+  const [forecast, setForecast] = useState(null);
   const fetchForecastHandler = () => {
-    fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+    fetch(`${api.base}weather?q=${search}&units=metric&APPID=${api.key}`)
       .then((res) => res.json())
       .then((data) => {
         let cityLat = data.coord.lat;
         let cityLon = data.coord.lon;
+       
 
         return fetch(
-          `${api.base}onecall?lat=${cityLat}&lon=${cityLon}&exclude=current,hourly,minutely&APPID=${api.key}`
+          `${api.base}onecall?lat=${cityLat}&lon=${cityLon}&exclude=current,hourly,minutely&units=metric&APPID=${api.key}`
         )
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            setForecast(data);
           });
       });
   };
@@ -36,13 +38,14 @@ function App() {
       </div>
       <div className="app">
         <Header />
-        <SearchBar />
-
-        {/* <button onClick={fetchForecastHandler}>Fetch Forecast</button> */}
+        <SearchBar
+          search={search}
+          setSearch={setSearch}
+          fetchForecastHandler={fetchForecastHandler}
+        />
       </div>
       <div className="forecast-list">
-        
-        <ForecastList />
+        <ForecastList forecast={forecast} />
       </div>
     </div>
   );

@@ -2,9 +2,10 @@
 
 .list{
     display:grid;
-    min-height: 40vh;
+    min-height: 50vh;
     min-width: 80vh;
     margin-top: 15px;
+    margin-bottom: 40px;
     grid-auto-columns: 1fr;
     grid-column-gap: 50px;
     grid-row-gap: 16px;
