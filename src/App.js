@@ -11,15 +11,17 @@ const api = {
 };
 
 function App() {
-  const [search, setSearch] = useState("Warsaw");
+  const [search, setSearch] = useState("");
   const [forecast, setForecast] = useState(null);
+  const [weather, setWeather] = useState(null);
   const fetchForecastHandler = () => {
     fetch(`${api.base}weather?q=${search}&units=metric&APPID=${api.key}`)
       .then((res) => res.json())
       .then((data) => {
         let cityLat = data.coord.lat;
         let cityLon = data.coord.lon;
-       
+        setWeather(data);
+        console.log(data)
 
         return fetch(
           `${api.base}onecall?lat=${cityLat}&lon=${cityLon}&exclude=current,hourly,minutely&units=metric&APPID=${api.key}`
@@ -45,7 +47,7 @@ function App() {
         />
       </div>
       <div className="forecast-list">
-        <ForecastList forecast={forecast} />
+        <ForecastList forecast={forecast} weather={weather} />
       </div>
     </div>
   );
