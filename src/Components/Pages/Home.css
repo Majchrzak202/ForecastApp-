@@ -1,0 +1,16 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 80vh;
+    margin-top: 20px;
+}
+
+.forecast-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    margin-bottom: 100px;
+}
