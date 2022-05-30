@@ -13,13 +13,14 @@ const SearchBar = ({ setSearch, fetchForecastHandler, search }) => {
     }
 
     fetchForecastHandler();
+    setSearch('')
   };
 
   return (
     <div className="form">
       <form>
         <div className="input">
-          <input onChange={searchHandler} type="text" />
+          <input onChange={searchHandler} type="text" value={search} />
         </div>
         <div className="form-button">
           <button onClick={submithHandler} className="button">FETCH FORECAST</button>

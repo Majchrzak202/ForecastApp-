@@ -6,3 +6,10 @@
     background-color: rgb(15, 15, 17);
     color: aliceblue;
 }
+
+.navlink { 
+    display: block;
+    margin: 1em;
+    text-decoration: none;
+    
+}
