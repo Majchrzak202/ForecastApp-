@@ -1,5 +1,6 @@
 import React from "react";
 import "./ForecastBlock.css";
+import { motion } from "framer-motion";
 
 const ForecastBlock = ({ min_temp, max_temp, icon_id, date, descript }) => {
   const url = `http://openweathermap.org/img/w/${icon_id}.png`;
@@ -33,7 +34,7 @@ const ForecastBlock = ({ min_temp, max_temp, icon_id, date, descript }) => {
   const currentDate = date.getDate();
 
   return (
-    <li className="ul">
+    <motion.li whileHover={{scale: 1.01}} className="ul">
       <h4>{weekDay}</h4>
       <p>
         {currentMonth} {currentDate}
@@ -42,7 +43,7 @@ const ForecastBlock = ({ min_temp, max_temp, icon_id, date, descript }) => {
       <p> min {min_temp}°</p>
       <p>max {max_temp}°</p>
       <p>{descript}</p>
-    </li>
+    </motion.li>
   );
 };
 

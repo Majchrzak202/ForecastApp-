@@ -2,9 +2,12 @@ import React from "react";
 import ForecastBlock from "./ForecastBlock";
 import "./ForecastList.css";
 import moment from "moment";
+import { motion } from "framer-motion";
 
 const ForecastList = ({ forecast, weather }) => {
   const blocks = [];
+
+  
 
   if (forecast === null) {
     return null;
@@ -22,8 +25,10 @@ const ForecastList = ({ forecast, weather }) => {
     }
   }
 
+  console.log("FUCKERS")
+
   return (
-    <div>
+    <motion.div animate={{y: -10}} transition={{ delay: 1}}>
       <div className="title">
         <h2>
           {weather && weather.name}, {weather && weather.sys.country}
@@ -32,8 +37,8 @@ const ForecastList = ({ forecast, weather }) => {
       <ul className="list">
         {forecast && blocks.map((item, index) => <div key={index}>{item}</div>)}
       </ul>
-    </div>
+    </motion.div>
   );
 };
 
-export default ForecastList;
+export default React.memo(ForecastList);

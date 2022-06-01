@@ -1,0 +1,16 @@
+.about { 
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    min-height: 80vh;
+}
+
+.about h2 {
+    text-align: center;
+}
+
+.about p {
+    text-align: center;
+}
+

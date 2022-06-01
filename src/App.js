@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import "./App.css";
 import Navbar from "./Components/UI/Navbar";
-import SearchBar from "./Components/UI/SearchBar";
-import Header from "./Components/UI/Header";
-import ForecastList from "./Components/Forecast /ForecastList";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./Components/Pages/About";
 import Contact from "./Components/Pages/Contact";
 import PageNotFound from "./Components/Pages/PageNotFound";
+import Home from "./Components/Pages/Home";
 
 const api = {
   base: "https://api.openweathermap.org/data/2.5/",
@@ -39,25 +36,26 @@ function App() {
 
   return (
     <Router>
+      <div>
+        <Navbar />
+      </div>
       <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              search={search}
+              setSearch={setSearch}
+              fetchForecastHandler={fetchForecastHandler}
+              forecast={forecast}
+              weather={weather}
+            />
+          }
+        ></Route>
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-      <div>
-        <Navbar />
-      </div>
-      <div className="app">
-        <Header />
-        <SearchBar
-          search={search}
-          setSearch={setSearch}
-          fetchForecastHandler={fetchForecastHandler}
-        />
-      </div>
-      <div className="forecast-list">
-        <ForecastList forecast={forecast} weather={weather} />
-      </div>
     </Router>
   );
 }
