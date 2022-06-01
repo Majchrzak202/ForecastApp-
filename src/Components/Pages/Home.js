@@ -17,7 +17,7 @@ const Home = ({search, setSearch, fetchForecastHandler, forecast, weather}) => {
         />
       </div>
       <div className='forecast-list'>
-        <ForecastList forecast={forecast} weather={weather} />
+        <ForecastList forecast={forecast} weather={weather}  />
       </div>
       <Footer/>
     </div>
