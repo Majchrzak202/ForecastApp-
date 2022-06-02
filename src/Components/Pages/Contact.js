@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Contact.css";
 
-const FORM_ENDPOINT = "";
+const FORM_ENDPOINT = "https://public.herotofu.com/v1/6d1bdc20-e231-11ec-826d-57a28a4a2cb5";
 
 const Contact = () => {
   const [submited, setSubmited] = useState(false);
@@ -10,30 +10,24 @@ const Contact = () => {
       setSubmited(true)
   };
 
-  if (submited) {
-      return <>
-      <div className='submited'>
-      <h4 >Thanks for Reaching Out!</h4>
-      <p>Someone will soon contatc with you! </p>
-      </div>
-      </>
-  }
+
 
   return (
     <div className="contact">
       <form
         onSubmit={submitHandler}
         action={FORM_ENDPOINT}
-        method="POST"
-        target="_blank"
+        method="post"
+        value="Download CTA"
+        
       >
         <div>
           <label>Name</label>
-          <input />
+          <input name="Name" id="name" type="text" required />
         </div>
         <div>
           <label>Email</label>
-          <input />
+          <input name="Email" id="email" type="email" required  />
         </div>
         <div>
           <label>Message</label>
