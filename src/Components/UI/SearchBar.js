@@ -1,5 +1,6 @@
 import React from "react";
 import "./SearchBar.css";
+import { motion } from "framer-motion";
 
 const SearchBar = ({ setSearch, fetchForecastHandler, search }) => {
   const searchHandler = (e) => {
@@ -9,12 +10,14 @@ const SearchBar = ({ setSearch, fetchForecastHandler, search }) => {
   const submithHandler = (e) => {
     e.preventDefault();
     if (search.length === 0) {
-      return
+      return;
     }
 
     fetchForecastHandler();
-    setSearch('')
+    setSearch("");
   };
+
+  console.log('TYPING')
 
   return (
     <div className="form">
@@ -23,11 +26,13 @@ const SearchBar = ({ setSearch, fetchForecastHandler, search }) => {
           <input onChange={searchHandler} type="text" value={search} />
         </div>
         <div className="form-button">
-          <button onClick={submithHandler} className="button">FETCH FORECAST</button>
+          <motion.button whileHover={{opacity:0.8, scale:1.01}} onClick={submithHandler} className="button">
+            FETCH FORECAST
+          </motion.button>
         </div>
       </form>
     </div>
   );
 };
 
-export default SearchBar;
+export default React.memo(SearchBar);

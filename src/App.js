@@ -5,6 +5,7 @@ import About from "./Components/Pages/About";
 import Contact from "./Components/Pages/Contact";
 import PageNotFound from "./Components/Pages/PageNotFound";
 import Home from "./Components/Pages/Home";
+import ThankYou from "./Components/Pages/ThankYou";
 
 const api = {
   base: "https://api.openweathermap.org/data/2.5/",
@@ -54,7 +55,9 @@ function App() {
         ></Route>
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path='/thank' element={<ThankYou />} />
         <Route path="*" element={<PageNotFound />} />
+        
       </Routes>
     </Router>
   );
