@@ -1,16 +1,14 @@
 .navbar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 12vh;
-    background-color: rgb(15, 15, 17);
-    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 12vh;
+  background-color: rgb(15, 15, 17);
 }
 
-.navlink { 
-    display: block;
-    margin: 1em;
-    text-decoration: none;
-    color: aliceblue;
-    
+.navlink {
+  display: block;
+  margin: 1em;
+  text-decoration: none;
+  color: aliceblue;
 }
