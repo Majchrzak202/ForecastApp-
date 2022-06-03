@@ -55,9 +55,8 @@ function App() {
         ></Route>
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path='/thank' element={<ThankYou />} />
+        <Route path="/thank" element={<ThankYou />} />
         <Route path="*" element={<PageNotFound />} />
-        
       </Routes>
     </Router>
   );

@@ -10,7 +10,7 @@ const Contact = () => {
       setSubmited(true)
   };
 
-
+  
 
   return (
     <div className="contact">
