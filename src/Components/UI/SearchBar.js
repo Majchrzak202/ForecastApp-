@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SearchBar.css";
 import { motion } from "framer-motion";
 
 const SearchBar = ({ setSearch, fetchForecastHandler, search }) => {
+  const [isTouched, setisTouched] = useState(false);
+
+  const inputIsValid = search.trim() !== "";
+  const inputIsInvalid = !inputIsValid && isTouched;
+
   const searchHandler = (e) => {
     setSearch(e.target.value);
+  };
+
+  const blurInputHandler = () => {
+    setisTouched(true);
   };
 
   const submithHandler = (e) => {
@@ -15,18 +24,31 @@ const SearchBar = ({ setSearch, fetchForecastHandler, search }) => {
 
     fetchForecastHandler();
     setSearch("");
+    setisTouched(false)
   };
 
-  console.log('TYPING')
+  const inputFormControl = inputIsInvalid ? "invalid" : "";
 
   return (
     <div className="form">
       <form>
         <div className="input">
-          <input onChange={searchHandler} type="text" value={search} />
+          <input
+            className={inputFormControl}
+            onBlur={blurInputHandler}
+            onChange={searchHandler}
+            type="text"
+            value={search}
+          />
+          {inputIsInvalid && <p>Please provide a valid City Name!</p>}
         </div>
         <div className="form-button">
-          <motion.button whileHover={{opacity:0.8, scale:1.01}} onClick={submithHandler} className="button">
+          <motion.button
+            whileHover={{ opacity: 0.8, scale: 1.01 }}
+            onClick={submithHandler}
+            className="button"
+            disabled={inputIsInvalid}
+          >
             FETCH FORECAST
           </motion.button>
         </div>
