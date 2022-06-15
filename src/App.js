@@ -16,8 +16,26 @@ function App() {
   const [search, setSearch] = useState("");
   const [forecast, setForecast] = useState(null);
   const [weather, setWeather] = useState(null);
-  const fetchForecastHandler = () => {
-    fetch(`${api.base}weather?q=${search}&units=metric&APPID=${api.key}`)
+  
+
+  const fetchForecastHandler = async () => {
+    const response = await fetch(
+      `${api.base}weather?q=${search}&units=metric&APPID=${api.key}`
+    );
+    const data = await response.json();
+    let cityLat = data.coord.lat;
+    let cityLon = data.coord.lon;
+    setWeather(data);
+    console.log(data);
+
+    const forecast = await fetch(
+      `${api.base}onecall?lat=${cityLat}&lon=${cityLon}&exclude=current,hourly,minutely&units=metric&APPID=${api.key}`
+    );
+    const forecastData = await forecast.json();
+    setForecast(forecastData)
+  };
+
+  /* fetch(`${api.base}weather?q=${search}&units=metric&APPID=${api.key}`)
       .then((res) => res.json())
       .then((data) => {
         let cityLat = data.coord.lat;
@@ -32,8 +50,7 @@ function App() {
           .then((data) => {
             setForecast(data);
           });
-      });
-  };
+      }); */
 
   return (
     <Router>

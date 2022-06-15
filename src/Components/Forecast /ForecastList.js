@@ -7,8 +7,6 @@ import { motion } from "framer-motion";
 const ForecastList = ({ forecast, weather }) => {
   const blocks = [];
 
-  
-
   if (forecast === null) {
     return null;
   } else {
@@ -25,10 +23,8 @@ const ForecastList = ({ forecast, weather }) => {
     }
   }
 
-  console.log("FUCKERS")
-
   return (
-    <motion.div animate={{y: -10}} transition={{ delay: 1}}>
+    <motion.div animate={{ y: -10 }} transition={{ delay: 1 }}>
       <div className="title">
         <h2>
           {weather && weather.name}, {weather && weather.sys.country}
