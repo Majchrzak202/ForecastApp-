@@ -6,6 +6,7 @@ import Contact from "./Components/Pages/Contact";
 import PageNotFound from "./Components/Pages/PageNotFound";
 import Home from "./Components/Pages/Home";
 import ThankYou from "./Components/Pages/ThankYou";
+import useFetch from "./hooks/useFetch";
 
 const api = {
   base: "https://api.openweathermap.org/data/2.5/",
@@ -16,9 +17,23 @@ function App() {
   const [search, setSearch] = useState("");
   const [forecast, setForecast] = useState(null);
   const [weather, setWeather] = useState(null);
-  
 
-  const fetchForecastHandler = async () => {
+  const GetWeather = async(data) => {
+    let cityLat = data.coord.lat;
+    let cityLon = data.coord.lon;
+    console.log(data)
+    setWeather(data);
+
+    const forecast = await fetch(
+      `${api.base}onecall?lat=${cityLat}&lon=${cityLon}&exclude=current,hourly,minutely&units=metric&APPID=${api.key}`
+    );
+    const forecastData = await forecast.json();
+    setForecast(forecastData);
+  }
+
+  const {sendRequest: fetchForecastHandler} = useFetch({url: `${api.base}weather?q=${search}&units=metric&APPID=${api.key}`}, GetWeather)
+
+ /*  const fetchForecastHandler = async () => {
     const response = await fetch(
       `${api.base}weather?q=${search}&units=metric&APPID=${api.key}`
     );
@@ -27,30 +42,7 @@ function App() {
     let cityLon = data.coord.lon;
     setWeather(data);
     console.log(data);
-
-    const forecast = await fetch(
-      `${api.base}onecall?lat=${cityLat}&lon=${cityLon}&exclude=current,hourly,minutely&units=metric&APPID=${api.key}`
-    );
-    const forecastData = await forecast.json();
-    setForecast(forecastData)
-  };
-
-  /* fetch(`${api.base}weather?q=${search}&units=metric&APPID=${api.key}`)
-      .then((res) => res.json())
-      .then((data) => {
-        let cityLat = data.coord.lat;
-        let cityLon = data.coord.lon;
-        setWeather(data);
-        console.log(data);
-
-        return fetch(
-          `${api.base}onecall?lat=${cityLat}&lon=${cityLon}&exclude=current,hourly,minutely&units=metric&APPID=${api.key}`
-        )
-          .then((res) => res.json())
-          .then((data) => {
-            setForecast(data);
-          });
-      }); */
+  }; */
 
   return (
     <Router>
