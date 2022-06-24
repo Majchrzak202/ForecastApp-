@@ -14,11 +14,21 @@
     display: block;
   }
 
-  .contact input  {
+  .inputControl  {
     font: inherit;
     padding: 0.5rem;
     border-radius: 6px;
     border: 1px solid #ccc;
+    width: 20rem;
+    max-width: 100%;
+  }
+
+  .inputControlInvalid {
+    font: inherit;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #b40e0e;
+    background-color: #fddddd;
     width: 20rem;
     max-width: 100%;
   }
@@ -62,6 +72,14 @@
     );
     color: #fff;
   }
+  button:disabled,
+button:disabled:hover,
+button:disabled:active {
+background-color: #ccc;
+color: black;
+border-color: #ccc;
+cursor: not-allowed;
+}
 
 
 
