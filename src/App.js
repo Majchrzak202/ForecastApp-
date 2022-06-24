@@ -7,6 +7,7 @@ import PageNotFound from "./Components/Pages/PageNotFound";
 import Home from "./Components/Pages/Home";
 import ThankYou from "./Components/Pages/ThankYou";
 import useFetch from "./hooks/useFetch";
+import Footer from "./Components/UI/Footer";
 
 const api = {
   base: "https://api.openweathermap.org/data/2.5/",
@@ -18,7 +19,7 @@ function App() {
   const [forecast, setForecast] = useState(null);
   const [weather, setWeather] = useState(null);
 
-  const GetWeather = async(data) => {
+  const GetWeather = async (data) => {
     let cityLat = data.coord.lat;
     let cityLon = data.coord.lon;
     console.log(data)
@@ -67,6 +68,7 @@ function App() {
         <Route path="/thank" element={<ThankYou />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+      <Footer/>
     </Router>
   );
 }

@@ -2,7 +2,6 @@ import React from "react";
 import Header from "../UI/Header";
 import SearchBar from "../UI/SearchBar";
 import ForecastList from "../Forecast /ForecastList";
-import Footer from "../UI/Footer";
 import './Home.css'
 
 const Home = ({search, setSearch, fetchForecastHandler, forecast, weather}) => {
@@ -19,7 +18,7 @@ const Home = ({search, setSearch, fetchForecastHandler, forecast, weather}) => {
       <div className='forecast-list'>
         <ForecastList forecast={forecast} weather={weather}  />
       </div>
-      <Footer/>
+      
     </div>
   );
 };
