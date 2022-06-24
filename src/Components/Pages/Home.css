@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-width: 80vh;
+    min-width: 70vh;
     margin-top: 20px;
 }
 
@@ -12,5 +12,5 @@
     justify-content: center;
     align-items: center;
     min-height: 50vh;
-    margin-bottom: 100px;
+    margin-bottom: 80;
 }
