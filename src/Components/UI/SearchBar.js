@@ -37,6 +37,7 @@ const SearchBar = ({ setSearch, fetchForecastHandler, search }) => {
             className={inputFormControl}
             onBlur={blurInputHandler}
             onChange={searchHandler}
+            placeholder='city/country name'
             type="text"
             value={search}
           />
@@ -49,7 +50,7 @@ const SearchBar = ({ setSearch, fetchForecastHandler, search }) => {
             className="button"
             disabled={inputIsInvalid}
           >
-            FETCH FORECAST
+            SHOW FORECAST
           </motion.button>
         </div>
       </form>
