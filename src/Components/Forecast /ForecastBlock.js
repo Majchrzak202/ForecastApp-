@@ -34,12 +34,12 @@ const ForecastBlock = ({ min_temp, max_temp, icon_id, date, descript }) => {
   const currentDate = date.getDate();
 
   return (
-    <motion.li whileHover={{scale: 1.01}} className="ul">
+    <motion.li whileHover={{ scale: 1.01 }} className="ul">
       <h4>{weekDay}</h4>
       <p>
         {currentMonth} {currentDate}
       </p>
-      <img src={url} alt={icon_id}/>
+      <img src={url} alt={icon_id} />
       <p> min {min_temp}°</p>
       <p>max {max_temp}°</p>
       <p>{descript}</p>

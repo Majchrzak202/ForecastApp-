@@ -2,9 +2,15 @@ import React from "react";
 import Header from "../UI/Header";
 import SearchBar from "../UI/SearchBar";
 import ForecastList from "../Forecast /ForecastList";
-import './Home.css'
+import "./Home.css";
 
-const Home = ({search, setSearch, fetchForecastHandler, forecast, weather}) => {
+const Home = ({
+  search,
+  setSearch,
+  fetchForecastHandler,
+  forecast,
+  weather,
+}) => {
   return (
     <div>
       <div className="app">
@@ -15,10 +21,9 @@ const Home = ({search, setSearch, fetchForecastHandler, forecast, weather}) => {
           fetchForecastHandler={fetchForecastHandler}
         />
       </div>
-      <div className='forecast-list'>
-        <ForecastList forecast={forecast} weather={weather}  />
+      <div className="forecast-list">
+        <ForecastList forecast={forecast} weather={weather} />
       </div>
-      
     </div>
   );
 };

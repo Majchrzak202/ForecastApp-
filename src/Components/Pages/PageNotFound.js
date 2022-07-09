@@ -1,9 +1,7 @@
 import React from "react";
 
 const PageNotFound = () => {
-    return (<div>
-        PAGE NOT FOUND SOMETHING WENT WRONG!
-    </div>)
-}
+  return <div>PAGE NOT FOUND SOMETHING WENT WRONG!</div>;
+};
 
-export default PageNotFound; 
+export default React.memo(PageNotFound);
