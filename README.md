@@ -1,7 +1,7 @@
 Hi! 
 
 Welcome to the Forecast App code. 
-I made this project for educational purposes. 
+I made this project for educational purposes. <br>
 It is a simple, sweet forecast App. 
 
 
