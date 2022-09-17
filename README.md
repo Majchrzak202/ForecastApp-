@@ -11,6 +11,14 @@ I have also made my onw custom hook - useFetch - to handle data fetching using O
 By utilizing this project i have also learned how Routing works. 
 I have used optimalization techniques before upload such as React.memo and LazyLoading to group files into smaller chunks and get faster page load time. 
 
+Features: 
+ <ul>
+  <li> 5 day upcoming Weather Forecast</li>
+  <li> Contact form with field validation</li>
+  <li> Custom hook to fetch data from API</li>
+  <li> Dynamic rendered List of data</li>
+</ul>
+
 Please feel free to use this project
 
 See live demo <a href='https://weather-app-deploy-hosting.web.app/'> here </a>
